@@ -8,6 +8,9 @@
  * This includes additional logic to check if another version of CoBlocks is
  * present. If that's the case, it'll take precedence over this one.
  **/
+
+namespace A8C_CoBlocks;
+
 if ( defined( 'IS_ATOMIC' ) && IS_ATOMIC ) {
   function load_coblocks() {
     $load_mu_coblocks = function() { require_once( WPMU_PLUGIN_DIR . '/coblocks/class-coblocks.php' ); };
@@ -21,5 +24,5 @@ if ( defined( 'IS_ATOMIC' ) && IS_ATOMIC ) {
       $load_mu_coblocks();
     }
   }
-  add_action( 'plugins_loaded', 'load_coblocks' );
+  add_action( 'plugins_loaded', __NAMESPACE__ . '\load_coblocks' );
 }
