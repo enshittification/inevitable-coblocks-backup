@@ -44,7 +44,6 @@ class CoBlocks_Block_Assets {
 	public function __construct() {
 		add_action( 'enqueue_block_assets', array( $this, 'block_assets' ) );
 		add_action( 'init', array( $this, 'editor_assets' ) );
-		add_action( 'enqueue_block_editor_assets', array( $this, 'editor_scripts' ) );
 		add_action( 'enqueue_block_editor_assets', array( $this, 'frontend_scripts' ) );
 		add_action( 'wp_enqueue_scripts', array( $this, 'frontend_scripts' ) );
 		add_action( 'save_post_wp_template_part', array( $this, 'clear_template_transients' ) );
@@ -214,7 +213,6 @@ class CoBlocks_Block_Assets {
 			has_block( 'coblocks/gallery-masonry' ) ||
 			has_block( 'coblocks/gallery-stacked' ) ||
 			has_block( 'coblocks/gallery-collage' ) ||
-			has_block( 'coblocks/gallery-carousel' ) ||
 			has_block( 'coblocks/gallery-offset' ) ||
 			has_block( 'core/gallery' ) ||
 			has_block( 'core/image' ) ||
@@ -281,26 +279,6 @@ class CoBlocks_Block_Assets {
 			)
 		);
 
-	}
-
-	/**
-	 * Enqueue editor scripts for blocks.
-	 *
-	 * @access public
-	 * @since 1.9.5
-	 */
-	public function editor_scripts() {
-		// Define where the vendor asset is loaded from.
-		$vendors_dir = CoBlocks()->asset_source( 'js', 'vendors' );
-
-		// Required by the events block.
-		wp_enqueue_script(
-			'coblocks-slick',
-			$vendors_dir . '/slick.js',
-			array( 'jquery' ),
-			COBLOCKS_VERSION,
-			true
-		);
 	}
 
 	/**
