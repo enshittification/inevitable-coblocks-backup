@@ -21,20 +21,9 @@ describe( 'Settings Modal: Typography feature', () => {
 
 		// Open settings modal.
 		cy.get( '.interface-interface-skeleton__header .edit-post-more-menu .components-button' ).click();
-		cy.get( '.components-menu-item__button,.components-button' ).contains( 'Editor settings' ).click();
 	} );
 
-	afterEach( () => {
-		cy.get( '.components-modal__header button[aria-label="Close dialog"]' ).click();
-	} );
-
-	it( 'can turn off all animation settings', () => {
-		cy.get( '.components-coblocks-typography-dropdown' ).should( 'exist' );
-
-		cy.get( '.coblocks-settings-modal' ).contains( 'Typography controls' ).click();
-
-		cy.get( '.components-coblocks-typography-dropdown' ).should( 'not.exist' );
-
-		cy.get( '.coblocks-settings-modal' ).contains( 'Typography controls' ).click();
+	it( 'Editor settings menu should not exist', () => {
+		cy.get( '.components-menu-item__button,.components-button' ).contains( 'Editor settings' ).should( 'not.exist' );
 	} );
 } );

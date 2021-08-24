@@ -58,17 +58,6 @@ describe( 'coblocks/gallery-collage transforms', () => {
 		}
 	} );
 
-	it( 'should transform from coblocks/gallery-carousel block', () => {
-		const galleryCollage = createBlock( 'coblocks/gallery-carousel', attributes );
-		const transformed = switchToBlockType( galleryCollage, name );
-
-		expect( transformed[ 0 ].isValid ).toBe( true );
-		for ( let i = 0; i < attributes.images.length; i++ ) {
-			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
-			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
-		}
-	} );
-
 	it( 'should transform from core/gallery block', () => {
 		const coreGallery = createBlock( 'core/gallery', { images: attributes.images } );
 		const transformed = switchToBlockType( coreGallery, name );
@@ -116,17 +105,6 @@ describe( 'coblocks/gallery-collage transforms', () => {
 	it( 'should transform to coblocks/gallery-offset block', () => {
 		const block = createBlock( name, attributes );
 		const transformed = switchToBlockType( block, 'coblocks/gallery-offset' );
-
-		expect( transformed[ 0 ].isValid ).toBe( true );
-		for ( let i = 0; i < attributes.images.length; i++ ) {
-			expect( transformed[ 0 ].attributes.images[ i ].index ).toBe( attributes.images[ i ].index );
-			expect( transformed[ 0 ].attributes.images[ i ].url ).toBe( attributes.images[ i ].url );
-		}
-	} );
-
-	it( 'should transform to coblocks/gallery-carousel block', () => {
-		const block = createBlock( name, attributes );
-		const transformed = switchToBlockType( block, 'coblocks/gallery-carousel' );
 
 		expect( transformed[ 0 ].isValid ).toBe( true );
 		for ( let i = 0; i < attributes.images.length; i++ ) {
