@@ -99,28 +99,15 @@ module.exports = function( grunt ) {
 					},
 				],
 			},
-			languages: {
-				src: 'languages/coblocks.pot',
-				overwrite: true,
-				replacements: [
-					{
-						from: /(Project-Id-Version: CoBlocks )[0-9\.]+/,
-						to: '$1' + pkg.version,
-					},
-				],
-			},
 		},
 
 		shell: {
 			build: [ 'npm run build' ].join( ' && ' ),
-			translations: [ 'npm run makepot' ].join( ' && ' ),
 		},
 
 	} );
 
 	require( 'matchdep' ).filterDev( 'grunt-*' ).forEach( grunt.loadNpmTasks );
 
-	grunt.registerTask( 'build', [ 'shell:build', 'update-pot', 'replace', 'clean:build', 'copy:build' ] );
-	grunt.registerTask( 'update-pot', [ 'shell:translations', 'replace:languages' ] );
-	grunt.registerTask( 'version', [ 'replace' ] );
+	grunt.registerTask( 'build', [ 'shell:build', 'replace', 'clean:build', 'copy:build' ] );
 };
