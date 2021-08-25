@@ -23,9 +23,7 @@
 		"lint:css": "wp-scripts lint-style",
 		"lint:js": "wp-scripts lint-js",
 		"lint:php": "wp-scripts env lint-php",
-		"test:php": "wp-scripts env test-php",
-		"test:js": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js",
-		"test:js:coverage": "wp-scripts test-unit-js --config .dev/tests/jest/jest.config.js --coverage"
+		"test:php": "wp-scripts env test-php"
 	},
 	"wp-env": {
 		"plugin-dir": "coblocks",
