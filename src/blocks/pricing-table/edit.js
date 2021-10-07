@@ -17,7 +17,6 @@ import Inspector from './inspector';
  * WordPress dependencies
  */
 import { __, sprintf } from '@wordpress/i18n';
-import { Component, Fragment } from '@wordpress/element';
 import { InnerBlocks } from '@wordpress/block-editor';
 import { withDispatch } from '@wordpress/data';
 import { createBlock } from '@wordpress/blocks';
@@ -36,7 +35,6 @@ const ALLOWED_BLOCKS = [ 'coblocks/pricing-table-item' ];
  * Returns the layouts configuration for a given number of items.
  *
  * @param {number} count Number of pricing table items.
- *
  * @return {Object[]} Tables layout configuration.
  */
 const getCount = memoize( ( count ) => {
@@ -49,62 +47,62 @@ const getCount = memoize( ( count ) => {
 
 /**
  * Block edit function
+ *
+ * @param {Object} props
  */
-class PricingTableEdit extends Component {
-	render() {
-		const {
-			attributes,
-			className,
-			isSelected,
-		} = this.props;
+const PricingTableEdit = ( props ) => {
+	const {
+		attributes,
+		className,
+		isSelected,
+	} = props;
 
-		const {
-			count,
-			contentAlign,
-		} = attributes;
+	const {
+		count,
+		contentAlign,
+	} = attributes;
 
-		const classes = classnames(
-			className,
-			{
-				[ `has-text-align-${ contentAlign }` ]: contentAlign,
-			}
-		);
+	const classes = classnames(
+		className,
+		{
+			[ `has-text-align-${ contentAlign }` ]: contentAlign,
+		}
+	);
 
-		return (
-			<Fragment>
-				{ isSelected && (
-					<Controls
-						{ ...this.props }
-					/>
-				) }
-				{ isSelected && (
-					<Inspector
-						{ ...this.props }
-					/>
-				) }
-				<div
-					className={ classes }
-				>
-					<GutterWrapper { ...attributes }>
-						<div className={ classnames( 'wp-block-coblocks-pricing-table__inner',
-							{
-								'has-columns': count > 1,
-								[ `has-${ count }-columns` ]: count,
-								'has-responsive-columns': count > 1,
-							}
-						) }>
-							<InnerBlocks
-								template={ getCount( count ) }
-								allowedBlocks={ ALLOWED_BLOCKS }
-								orientation={ count > 1 ? 'horizontal' : 'vertical' }
-								__experimentalCaptureToolbars={ true } />
-						</div>
-					</GutterWrapper>
-				</div>
-			</Fragment>
-		);
-	}
-}
+	return (
+		<>
+			{ isSelected && (
+				<Controls
+					{ ...props }
+				/>
+			) }
+			{ isSelected && (
+				<Inspector
+					{ ...props }
+				/>
+			) }
+			<div
+				className={ classes }
+			>
+				<GutterWrapper { ...attributes }>
+					<div className={ classnames( 'wp-block-coblocks-pricing-table__inner',
+						{
+							'has-columns': count > 1,
+							[ `has-${ count }-columns` ]: count,
+							'has-responsive-columns': count > 1,
+						}
+					) }>
+						<InnerBlocks
+							template={ getCount( count ) }
+							allowedBlocks={ ALLOWED_BLOCKS }
+							orientation={ count > 1 ? 'horizontal' : 'vertical' }
+							__experimentalCaptureToolbars={ true } />
+					</div>
+				</GutterWrapper>
+			</div>
+		</>
+	);
+};
 
 export default withDispatch( ( dispatch, ownProps, registry ) => ( {
 
@@ -127,7 +125,10 @@ export default withDispatch( ( dispatch, ownProps, registry ) => ( {
 			innerBlocks = [
 				...innerBlocks,
 				...times( newTables - previousTables, () => {
-					return createBlock( 'coblocks/pricing-table-item', { placeholder: sprintf( __( 'Plan %d', 'coblocks' ), parseInt( newTables ) ) } );
+					return createBlock( 'coblocks/pricing-table-item', { placeholder:
+						/* translators: %d is a placeholder for the nth plan number ( eg. Plan 1, Plan 2 )*/
+						sprintf( __( 'Plan %d', 'coblocks' ), parseInt( newTables ) ),
+					} );
 				} ),
 			];
 		} else {

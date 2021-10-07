@@ -170,6 +170,17 @@ class GalleryStackedEdit extends Component {
 
 		const hasImages = !! images.length;
 
+		const stackedGalleryPlaceholder = (
+			<Fragment>
+				{ ! hasImages ? noticeUI : null }
+				<GalleryPlaceholder
+					{ ...this.props }
+					label={ __( 'Stacked', 'coblocks' ) }
+					icon={ <Icon icon={ icon } /> }
+					gutter={ gutter }
+				/>
+			</Fragment> );
+
 		if ( ! hasImages ) {
 			return stackedGalleryPlaceholder;
 		}

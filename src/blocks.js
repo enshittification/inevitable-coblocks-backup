@@ -9,11 +9,13 @@ import {
 // Register block category
 import './utils/block-category';
 
+// Utils
+import './js/coblocks-color-fix';
+
 // Extensions
-// wpcom-disabled-start
-// import './extensions/colors/inspector';
-// import './extensions/typography';
-// wpcom-disabled-end
+import './extensions/animation';
+import './extensions/colors/inspector';
+import './extensions/typography';
 import './extensions/attributes';
 // wpcom-disabled-start
 // import './extensions/advanced-controls';
@@ -24,14 +26,18 @@ import './extensions/attributes';
 // import './extensions/image-styles';
 // wpcom-disabled-end
 import './extensions/cover-styles';
-// wpcom-disabled-start
-// import './extensions/lightbox-controls';
-// wpcom-disabled-end
+import './extensions/media-text-styles';
+import './extensions/lightbox-controls';
 import './extensions/replace-image';
-// wpcom-disabled-start
-// import './extensions/image-crop';
-// import './extensions/coblocks-settings/';
-// import './extensions/layout-selector';
+import './extensions/image-crop';
+import './extensions/image-filter';
+import './extensions/coblocks-settings/';
+import './extensions/layout-selector';
+import './extensions/block-patterns';
+
+// Internal Extensions / Components
+import './components/gutter-control';
+import './components/form-label-colors';
 
 // Formats
 import './formats';
@@ -43,6 +49,7 @@ import './formats';
 
 // Deprecate Blocks
 import './js/deprecations/deprecate-coblocks-buttons.js';
+import './js/deprecations/deprecate-coblocks-media-card.js';
 
 // Register Blocks
 
@@ -100,10 +107,9 @@ import * as masonry from './blocks/gallery-masonry';
 // import * as mediaCard from './blocks/media-card';
 // wpcom-disabled-end
 import * as offset from './blocks/gallery-offset';
-// wpcom-disabled-start
-// import * as posts from './blocks/posts';
-// import * as postCarousel from './blocks/post-carousel';
-// wpcom-disabled-end
+import * as openTable from './blocks/opentable';
+import * as posts from './blocks/posts';
+import * as postCarousel from './blocks/post-carousel';
 import * as pricingTable from './blocks/pricing-table';
 import * as pricingTableItem from './blocks/pricing-table/pricing-table-item';
 // wpcom-disabled-start
@@ -120,7 +126,6 @@ import * as stacked from './blocks/gallery-stacked';
  * Function to register an individual block.
  *
  * @param {Object} block The block to be registered.
- *
  */
 const registerBlock = ( block ) => {
 	if ( ! block ) {
@@ -232,10 +237,9 @@ export const registerCoBlocksBlocks = () => {
 		// mediaCard,
 		// wpcom-disabled-end
 		offset,
-		// wpcom-disabled-start
-		// posts,
-		// postCarousel,
-		// wpcom-disabled-end
+		openTable,
+		posts,
+		postCarousel,
 		pricingTable,
 		pricingTableItem,
 		// wpcom-disabled-start

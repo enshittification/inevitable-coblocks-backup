@@ -348,6 +348,15 @@ class CoBlocks_Block_Assets {
 		// 	COBLOCKS_VERSION,
 		// 	true
 		// );
+
+		// // Enqueue for coblocks animations.
+		// wp_enqueue_script(
+		// 	'coblocks-animation',
+		// 	$dir . 'coblocks-animation.js',
+		// 	array(),
+		// 	COBLOCKS_VERSION,
+		// 	true
+		// );
 		// wpcom-disabled-end
 
 		// Masonry block.

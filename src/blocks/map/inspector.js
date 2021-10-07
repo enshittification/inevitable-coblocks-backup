@@ -226,14 +226,14 @@ class Inspector extends Component {
 							{ ( this.state.apiKey === this.props.apiKey && this.props.apiKey !== '' ) ? __( 'Saved', 'coblocks' ) : __( 'Save', 'coblocks' ) }
 						</Button>
 						{ apiKey &&
-						<Button
-							className="components-block-coblocks-map-api-key-remove__button"
-							isSecondary
-							onClick={ this.removeApiKey }
-							disabled={ this.state.apiKey !== this.props.apiKey || ! this.state.apiKey }
-						>
-							{ __( 'Remove', 'coblocks' ) }
-						</Button>
+							<Button
+								className="components-block-coblocks-map-api-key-remove__button"
+								isSecondary
+								onClick={ this.removeApiKey }
+								disabled={ this.state.apiKey !== this.props.apiKey || ! this.state.apiKey }
+							>
+								{ __( 'Remove', 'coblocks' ) }
+							</Button>
 						}
 					</PanelBody>
 				</InspectorControls>
@@ -243,3 +243,4 @@ class Inspector extends Component {
 }
 
 export default Inspector;
+

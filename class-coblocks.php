@@ -4,7 +4,7 @@
  * Description: CoBlocks is a suite of professional <strong>page building content blocks</strong> for the WordPress Gutenberg block editor. Our blocks are hyper-focused on empowering makers to build beautifully rich pages in WordPress.
  * Author: GoDaddy
  * Author URI: https://www.godaddy.com
- * Version: 2.16.0
+ * Version: 2.17.0
  * Text Domain: coblocks
  * Domain Path: /languages
  * Tested up to: 5.8
@@ -29,7 +29,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'COBLOCKS_VERSION', '2.16.0' );
+define( 'COBLOCKS_VERSION', '2.17.0' );
 define( 'COBLOCKS_PLUGIN_DIR', plugin_dir_path( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_URL', plugin_dir_url( __FILE__ ) );
 define( 'COBLOCKS_PLUGIN_FILE', __FILE__ );
@@ -105,6 +105,12 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 		 * @return void
 		 */
 		private function includes() {
+			// wpcom-disabled-start
+			// Traits.
+			// require_once COBLOCKS_PLUGIN_DIR . 'includes/traits/trait-coblocks-singleton.php';
+
+			// require_once COBLOCKS_PLUGIN_DIR . 'includes/class-block-patterns.php';
+			// wpcom-disabled-end
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-block-assets.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-register-blocks.php';
 			require_once COBLOCKS_PLUGIN_DIR . 'includes/class-coblocks-generated-styles.php';
@@ -124,14 +130,11 @@ if ( ! class_exists( 'CoBlocks' ) ) :
 			// require_once COBLOCKS_PLUGIN_DIR . 'includes/ical-parser/class-coblocks-event.php';
 			// require_once COBLOCKS_PLUGIN_DIR . 'includes/ical-parser/class-coblocks-ical.php';
 
-			// Require the Gutenberg plugin for specific components.
-			// include_once ABSPATH . 'wp-admin/includes/plugin.php';
-			// $installed_plugins = get_plugins();
+			// // Require CoBlocks custom filters.
+			// require_once COBLOCKS_PLUGIN_DIR . 'src/components/gutter-control/gutter-wrapper.php';
+			// require_once COBLOCKS_PLUGIN_DIR . 'src/components/form-label-colors/label-color-wrapper.php';
 
-			// $gutenberg_plugin_file    = 'gutenberg/gutenberg.php';
-			// $gutenberg_plugin_version = empty( $installed_plugins[ $gutenberg_plugin_file ] ) ? null : $installed_plugins[ $gutenberg_plugin_file ]['Version'];
-
-			// if ( is_admin() && is_plugin_active( $gutenberg_plugin_file ) && version_compare( $gutenberg_plugin_version, '8.0.0', '>=' ) ) {
+			// if ( is_admin() ) {
 			// 	require_once COBLOCKS_PLUGIN_DIR . 'src/extensions/layout-selector/index.php';
 			// }
 

@@ -205,7 +205,7 @@ class Edit extends Component {
 						showHandle={ isSelected }
 					>
 						{ !! this.state.apiKey
-							? ( compose(	withProps( {
+							? ( compose( withProps( {
 								googleMapURL:
 									`https://maps.googleapis.com/maps/api/js?key=${ this.state.apiKey }` +
 									`&language=${ locale }` +
@@ -332,3 +332,4 @@ class Edit extends Component {
 }
 
 export default compose( [ withNotices ] )( Edit );
+

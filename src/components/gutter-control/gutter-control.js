@@ -11,13 +11,6 @@ import { __ } from '@wordpress/i18n';
 import { Component, Fragment } from '@wordpress/element';
 
 const gutterOptions = [
-	// wpcom-custom-start
-	{
-		value: 'no',
-		label: __( 'None', 'coblocks' ),
-		tooltip: __( 'None', 'coblocks' ),
-	},
-	// wpcom-custom-end
 	{
 		value: 'small',
 		/* translators: abbreviation for small size */
@@ -36,14 +29,6 @@ const gutterOptions = [
 		label: __( 'L', 'coblocks' ),
 		tooltip: __( 'Large', 'coblocks' ),
 	},
-	// wpcom-custom-start
-	{
-		value: 'huge',
-		/* translators: abbreviation for largest size */
-		label: __( 'XL', 'coblocks' ),
-		tooltip: __( 'Huge', 'coblocks' ),
-	},
-	// wpcom-custom-end
 ];
 
 export default class GutterControl extends Component {
@@ -85,9 +70,7 @@ export default class GutterControl extends Component {
 					label={ __( 'Gutter', 'coblocks' ) }
 					currentOption={ gutter }
 					options={ gutterOptions }
-					// wpcom-disabled-start
-					// showCustomOption
-					// wpcom-disabled-end
+					showCustomOption
 					onChange={ ( newGutter ) => setAttributes( { gutter: newGutter } ) } />
 				{
 					gutter === 'custom' &&

@@ -12,6 +12,7 @@ import metadata from './block.json';
 import save from './save';
 import transforms from './transforms';
 import { BackgroundAttributes } from '../../components/background';
+import { MediaCardIcon as icon } from '@godaddy-wordpress/coblocks-icons';
 
 /**
  * WordPress dependencies
